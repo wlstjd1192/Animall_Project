@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.kh.animall.users.product.model.vo.Product" alias="Product" />
+		<typeAlias type="com.kh.animall.index.model.vo.IndexProduct" alias="IndexProduct" />
+		<typeAlias type="com.kh.animall.index.model.vo.ProductImages" alias="ProductImages" />
+		<typeAlias type="com.kh.animall.index.model.vo.ProductListView" alias="ProductListView" />
+		<typeAlias type="com.kh.animall.users.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.kh.animall.admin.model.vo.Stylist" alias="Stylist" />
+		<typeAlias type="com.kh.animall.admin.model.vo.MemberBoard" alias="MemberBoard" />
+		<typeAlias type="com.kh.animall.admin.model.vo.AdminMember" alias="AdminMember" />
+	</typeAliases>
+
+	<typeHandlers>
+	
+	</typeHandlers>
+</configuration>

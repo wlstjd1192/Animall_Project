@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="productMapper">
+	
+	<select id="selectProductList" parameterType="string" resultType="Product">
+		SELECT P.PNO, P.PNAME, P.PCONTENT, PI.CHANGENAME 
+		FROM PRODUCT P JOIN PRODUCT_IMAGES PI ON(P.PNO = PI.PNO)
+		WHERE PTYPE = #{ptype}
+	</select>
+	
+	<insert id="insertProduct">
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+			 SELECT SEQ_BOARD.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO BOARD (BNO, MNO, BTITLE, BCONTENT, BDATE)
+		VALUES (#{bno}, #{mno}, #{btitle}, #{bcontent}, SYSDATE)
+	</insert>
+	
+	
+	<insert id="insertProductImg">
+		INSERT INTO BOARD_IMAGES (BIMGNO, BNO, MNO, ORIGINNAME, CHANGENAME, IMGPATH, IMGLEVEL, UPLOADDATE)
+		SELECT SEQ_BOARD_IMAGE.NEXTVAL, A.* from(		
+		<foreach collection="list" item="bi" separator="UNION ALL">
+			SELECT #{bi.bno}, #{bi.mno}, #{bi.originname}, #{bi.changename}, #{bi.imgpath}, #{bi.imglevel}, SYSDATE FROM DUAL
+		</foreach>
+		) A
+	</insert>
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+</mapper>
